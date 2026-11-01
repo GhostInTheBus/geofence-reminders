@@ -1,0 +1,8 @@
+# ~/.hermes/geofence.conf   (not secret, written by geofence_setup.sh when it asks)
+# Where Hermes delivers reminders (same format as hermes cron create --deliver)
+DELIVER='telegram:123456789'
+# NAS mode only
+NAS_SSH_HOST='nas'                          # an ssh alias that logs in with a key
+NAS_API_URL='http://192.168.1.20:8377'      # how this machine reaches the NAS service
+NAS_REMOTE_DIR='/volume1/docker/geofence'   # where the container files go on the NAS
+NAS_DAWARICH_URL='http://127.0.0.1:3000'    # how the NAS reaches Dawarich (same box by default)

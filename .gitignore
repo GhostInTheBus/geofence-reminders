@@ -1,0 +1,16 @@
+# never commit real config or runtime state
+*.env
+*.env.*
+!*.env.example
+secrets/
+*.json.lock
+geofence_feed_state.json
+status.json
+*.tgz
+geofence.conf
+geofences.json
+data/
+*.log
+__pycache__/
+*.pyc
+.DS_Store

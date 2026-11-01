@@ -1,0 +1,17 @@
+# Location-based reminders, always-on poller. geofence_setup.sh nas puts it in NAS_REMOTE_DIR
+# (default /volume1/docker/geofence, the usual Synology docker folder).
+# Manage (as root): cd /volume1/docker/geofence && docker compose up -d | restart | logs -f | down
+services:
+  geofence:
+    image: python:3.12-alpine
+    container_name: geofence
+    network_mode: host          # reaches Dawarich at 127.0.0.1:3000, serves the API on :8377
+    restart: unless-stopped
+    env_file: ./geofence.env    # secrets, chmod 600, never in git
+    environment:
+      - DATA_DIR=/data
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./geofence_nas.py:/app/geofence_nas.py:ro
+      - ./data:/data
+    command: ["python", "/app/geofence_nas.py"]
